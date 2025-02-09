@@ -1,7 +1,7 @@
 <h1>Запуск проекта локально</h1>
 
-<p>1. docker-compose -f .docker/docker-compose.local.yml up --build</p>
-<p>2. sh enter.sh</p>
+<p>1. cd .docker & docker-compose -f docker-compose.local.yml up --build</p>
+<p>2. sh ../enter.sh</p>
 <p>3. перейти на http://localhost:3000/</p>
 
 <h2>Описание</h2>
