@@ -1,0 +1,135 @@
+$primary-color: #3490dc;
+$background-color: #f7f7f7;
+$text-color: #333;
+$incoming-color: #e1f5fe;
+$outgoing-color: #d1c4e9;
+
+.chat {
+  width: 80%; // Ширина окна чата
+  height: 100vh; // Высота окна чата
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; // Центрирование по горизонтали
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: $background-color;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  &__messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto; // Прокрутка сообщений
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+  }
+
+  &__message {
+    margin-bottom: 12px;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 75%;
+    position: relative; // Для абсолютного позиционирования стрелок
+
+    &--incoming {
+      background-color: $incoming-color;
+      align-self: flex-start; // Выравнивание для входящих сообщений
+    }
+
+    &--outgoing {
+      background-color: $outgoing-color;
+      align-self: flex-end; // Выравнивание для исходящих сообщений
+      margin-left: auto;
+    }
+  }
+
+  &__message-text {
+    margin: 0;
+    color: $text-color;
+  }
+
+  &__input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: white;
+    padding-bottom: 30px;
+
+    &-field {
+      flex: 1;
+      margin-right: 15px;
+      font-size: 16px;
+    }
+  }
+
+  &__button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &--send {
+      flex-shrink: 0;
+      width: 62px;
+      height: 62px;
+      background-image: url("../../public/icons/send.png");
+      background-size: 27px 27px;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    &--mic {
+      flex-shrink: 0;
+      width: 62px;
+      height: 62px;
+      background-image: url("../../public/icons/micro.svg");
+      background-size: 27px 27px;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary-color;
+        box-shadow: 0 6px 12px $primary-color;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &.listening {
+        background-color: #d32f2f;
+        animation: pulse 1.5s infinite;
+        box-shadow: 0 0 15px rgba(211, 47, 47, 0.8);
+      }
+    }
+
+    &--disabled{
+      opacity: 0.6;
+      &:hover{
+        background-color: $primary-color;
+      }
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 20px rgba(211, 47, 47, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
+    }
+  }
+}
